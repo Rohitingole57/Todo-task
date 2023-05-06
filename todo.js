@@ -21,7 +21,6 @@ todoItems.map(function (elem, index) {
 
 
     var td4 = document.createElement("td")
-    // var btn = document.createElement("button")
     td4.textContent = "completed";
     td4.style.color = "red";
     td4.style.cursor = "pointer";
@@ -30,15 +29,31 @@ todoItems.map(function (elem, index) {
         td4.style.color = "green";
     })
 
-    tr.append(td1, td2, td3, td5, td4);
-    document.querySelector("#body").append(tr);
+    var btn = document.createElement("button")
+    btn.innerText = "Delete"
+    btn.style.alignItems = "center";
+    btn.style.margin = "20px"
+    btn.style.padding = "6px"
+    btn.style.color = "white";
+    btn.style.border = "none";
+    btn.style.backgroundColor = "red";
+    btn.addEventListener("click", function () {
+        removeItem(elem, index)
+    })
 
+    tr.append(td1, td2, td3, td5, td4, btn);
+
+    document.querySelector("#body").append(tr);
 });
 
-function markComplateFunction(elem, index) {
+function removeItem(elem, index) {
+    todoItems.splice(index, 1)
+    localStorage.setItem("todoData", JSON.stringify(todoItems))
+    window.location.reload();
+}
+
+function markComplateFunction(elem) {
     event.preventDefault();
     completed.push(elem);
-    // console.log(completed);
     localStorage.setItem("completedTodo", JSON.stringify(completed));
-    //splice
 }
