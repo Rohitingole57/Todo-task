@@ -35,6 +35,7 @@ todoItems.map(function (elem, index) {
     btn.style.margin = "20px"
     btn.style.padding = "6px"
     btn.style.color = "white";
+    btn.style.cursor = "pointer";
     btn.style.border = "none";
     btn.style.backgroundColor = "red";
     btn.addEventListener("click", function () {
